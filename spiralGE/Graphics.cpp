@@ -8,7 +8,7 @@
 #include "Graphics.h"
 #include "log.h"
 namespace sge {
-	namespace graph {
+	namespace Graph {
 		Graphics::Graphics(GLFWwindow* renderWindow) : m_win(renderWindow)
 		{
 			//the constructor sets up the environment for 3d rendering in the
@@ -38,16 +38,15 @@ namespace sge {
 		{
 		}
 
-		OGLObject::OGLObject(const float data[])
+		OGLObject::OGLObject(const GLfloat *data, const unsigned int arrSize)
 		{	
-			GLuint VBO;
-			glGenBuffers(1, &VBO);
-			glBindBuffer(GL_ARRAY_BUFFER, VBO);
-			glBufferData(GL_ARRAY_BUFFER, sizeof(data),data, GL_STATIC_DRAW);
-			LOG(glGetError());
+			glGenBuffers(1, &m_VBO);
+			glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
+			glBufferData(GL_ARRAY_BUFFER,sizeof(GLfloat)*arrSize,data, GL_STATIC_DRAW);
 			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 			glEnableVertexAttribArray(0);
 		}
+
 		OGLObject::~OGLObject()
 		{
 		}
@@ -56,7 +55,7 @@ namespace sge {
 			glUseProgram(target.shaderProgram);
 			glDrawArrays(GL_TRIANGLES, 0, 3);
 		}
-		GLuint Graphics::OGLCreateShadProgFromFiles(std::string vertexLoc, std::string fragmentLoc)
+		GLuint Graphics::OGLCreateShadProg(std::string vertexLoc, std::string fragmentLoc)
 		{
 			//Reads two plaintext files and converts them into a openGL shaders
 			std::ifstream fragShaderFile, vertShaderFile;
@@ -72,7 +71,7 @@ namespace sge {
 				const char* fragShaderCode = szShaderCode.c_str();
 				fragShaderFile.close();
 
-				GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+				GLint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 				glShaderSource(fragmentShader, 1, &fragShaderCode, nullptr);
 				glCompileShader(fragmentShader);
 				GLint compileCorrectly;
@@ -92,7 +91,7 @@ namespace sge {
 				szShaderCode = shadCodeStream.str();
 				const char* vertShaderCode = szShaderCode.c_str();
 				vertShaderFile.close();
-				GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
+				GLint vertexShader = glCreateShader(GL_VERTEX_SHADER);
 				glShaderSource(vertexShader, 1, &vertShaderCode, nullptr);
 				glCompileShader(vertexShader);
 				glGetShaderiv(GL_VERTEX_SHADER, GL_COMPILE_STATUS, &compileCorrectly);

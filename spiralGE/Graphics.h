@@ -5,13 +5,17 @@
 #include <GLFW/glfw3.h>
 
 namespace sge {
-	namespace graph {
+	namespace Graph {
+		 
 		class OGLObject {
+			GLuint m_VBO;
+			
 		public:
 			GLuint shaderProgram;
-			OGLObject(const float data[]);
+			OGLObject(const GLfloat *data, const unsigned int arrSize);
 			~OGLObject();
 		};
+
 		class Graphics
 		{
 			GLFWwindow *m_win = nullptr;
@@ -21,7 +25,7 @@ namespace sge {
 				otherOptionTest
 			};
 			constexpr static const int selectedRendr = openGL;
-			GLuint OGLCreateShadProgFromFiles(std::string fragmentLoc, std::string vertLoc);
+			GLuint OGLCreateShadProg(std::string fragmentLoc, std::string vertLoc);
 			void OGLDrawObject(OGLObject &target) const;
 			Graphics(GLFWwindow* renderWindow);
 			~Graphics();

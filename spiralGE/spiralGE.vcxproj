@@ -136,7 +136,9 @@
     <ClInclude Include="BasicMat.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="log.h" />
+    <ClInclude Include="objParser.h" />
     <ClInclude Include="setupEnv.h" />
+    <ClInclude Include="tiny_obj_loader.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>

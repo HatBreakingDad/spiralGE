@@ -8,9 +8,11 @@ namespace sge {
 	{
 		if (glfwInit()) {
 			glfwWin = glfwCreateWindow(w, h, title.c_str(), nullptr, nullptr);
+			if (!glfwWin)
+				LOG("Failed to create window");
 			glfwMakeContextCurrent(glfwWin);
 		}
-		else LOG("Window failed to initialize");
+		else LOG("GLFW failed to initialize");
 	}
 
 	Window::~Window()
