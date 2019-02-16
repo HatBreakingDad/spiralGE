@@ -9,8 +9,8 @@ namespace sge {
 		 
 		class OGLObject {
 			GLuint m_VBO;
-			
 		public:
+			const unsigned int vertexCount;
 			GLuint shaderProgram;
 			OGLObject(const GLfloat *data, const unsigned int arrSize);
 			~OGLObject();
