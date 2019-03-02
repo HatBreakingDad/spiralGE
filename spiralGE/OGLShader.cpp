@@ -3,11 +3,11 @@
 
 namespace sge {
 	namespace Graph {
-		void OGLShader::setUniformMat4(const char *attributeName, glm::mat4 value)
+		void OGLShader::setMat4(const char *attributeName, glm::mat4 value)
 		{
 			glUniformMatrix4fv(glGetUniformLocation(shaderProgram, attributeName),1,GL_FALSE,glm::value_ptr(value));
 		}
-		OGLShader::OGLShader(std::string fragmentPath,std::string vertexPath)
+		OGLShader::OGLShader(std::string vertexPath,std::string fragmentPath)
 		{
 			//Reads two plaintext files and converts them into a openGL shaders
 			std::ifstream fragShaderFile, vertShaderFile;

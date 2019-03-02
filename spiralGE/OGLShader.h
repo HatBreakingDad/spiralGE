@@ -12,8 +12,8 @@ namespace sge {
 		{
 		public:
 			GLuint shaderProgram;
-			void setUniformMat4(const char *attributeLocation, glm::mat4 value);
-			OGLShader(std::string fragmentPath, std::string vertexPath);
+			void setMat4(const char *attributeLocation, glm::mat4 value);
+			OGLShader(std::string vertexPath,std::string fragmentPath);
 			~OGLShader();
 		};
 	}
