@@ -1,25 +1,34 @@
 #pragma once
 #include <vector>
 #include <array>
+#include <glm/mat4x4.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/vec3.hpp>
 
 #include "window.h"
-#include "Graphics.h"
+#include "OGLGraphics.h"
 #include "log.h"
-#include "objParser.h"
+#include "modelLoader.h"
 
 namespace sge {
 	void setupEnv(void) {
 		Window window(800, 600, "spiral engine");
-		Graph::Graphics g(window.glfwWin);
-		GLuint shadProg = g.OGLCreateShadProg("testVertex.vs", "testFragment.fs");
-
-		//GLfloat vertices[] = Utility::OGLCreateObjFromFile("teapot.obj");
-		//Graph::OGLObject triangle(0.1, 3);
-		//triangle.shaderProgram = shadProg;
-		int yes = Utility::OGLCreateObjFromFile("teapot.obj");
+		Graph::OGLGraphics g(window.glfwWin);
+		Graph::OGLShader quickShader("res/shaders/testVertex.vert", "res/shaders/testFragment.frag");
+		const Graph::BasicModel smileyFaceModel = Utility::createModelFromFile("res/models/teapot.obj");
+		
+		Graph::OGLObject smileyFace(smileyFaceModel.meshes[0].vertices.data(), 
+			smileyFaceModel.meshes[0].indices.data(), smileyFaceModel.meshes[0].vertices.size(),&quickShader.shaderProgram);
+		glm::vec3 forwardPosition = glm::vec3(0);
+		glm::mat4 transformEdit = glm::mat4(1.0f);
 		while (!glfwWindowShouldClose(window.glfwWin)) {
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-			//g.OGLDrawObject(triangle);
+			g.OGLDrawObject(smileyFace);
+			if (glfwGetKey(window.glfwWin, GLFW_KEY_UP)) {
+				forwardPosition .z += 0.1;
+				transformEdit= glm::translate(transformEdit, forwardPosition);
+				quickShader.setUniformMat4("model", transformEdit);
+			}
 			glfwSwapBuffers(window.glfwWin);
 			glfwPollEvents();
 		}

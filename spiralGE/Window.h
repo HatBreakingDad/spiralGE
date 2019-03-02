@@ -6,6 +6,7 @@ namespace sge {
 	class Window
 	{
 	public:
+		const unsigned int windowWidth, windowHeight;
 		GLFWwindow* glfwWin = nullptr;
 		Window(unsigned int w, unsigned int h, std::string title);
 		~Window();

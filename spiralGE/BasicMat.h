@@ -1,5 +1,5 @@
 #pragma once
-#include "Graphics.h"
+#include "OGLGraphics.h"
 class BasicMat
 {
 public:

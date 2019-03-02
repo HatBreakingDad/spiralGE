@@ -16,30 +16,42 @@
     <Filter Include="Header Files\test">
       <UniqueIdentifier>{5e995ba2-d4f8-4d44-ad55-e2c087ffdd75}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\core">
-      <UniqueIdentifier>{bf5d8cd5-aa39-4c14-a037-06405bc22f5e}</UniqueIdentifier>
+    <Filter Include="Header Files\OGLRenderer">
+      <UniqueIdentifier>{d8aa0d26-6967-4af0-81ee-0ba852d6d118}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="setupEnv.h">
       <Filter>Header Files\test</Filter>
     </ClInclude>
-    <ClInclude Include="Graphics.h">
-      <Filter>Header Files\core</Filter>
-    </ClInclude>
-    <ClInclude Include="log.h">
-      <Filter>Header Files\core</Filter>
-    </ClInclude>
-    <ClInclude Include="Window.h">
-      <Filter>Header Files\core</Filter>
-    </ClInclude>
     <ClInclude Include="BasicMat.h">
       <Filter>Header Files\test</Filter>
     </ClInclude>
-    <ClInclude Include="tiny_obj_loader.h">
+    <ClInclude Include="modelLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="objParser.h">
+    <ClInclude Include="log.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicMesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OGLGraphics.h">
+      <Filter>Header Files\OGLRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="OGLobject.h">
+      <Filter>Header Files\OGLRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="OGLShader.h">
+      <Filter>Header Files\OGLRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -50,14 +62,29 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Graphics.cpp">
-      <Filter>Header Files\core</Filter>
-    </ClCompile>
-    <ClCompile Include="Window.cpp">
-      <Filter>Header Files\core</Filter>
-    </ClCompile>
     <ClCompile Include="BasicMat.cpp">
       <Filter>Header Files\test</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicModel.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicMesh.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OGLGraphics.cpp">
+      <Filter>Header Files\OGLRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="OGLObject.cpp">
+      <Filter>Header Files\OGLRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="OGLShader.cpp">
+      <Filter>Header Files\OGLRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -4,10 +4,10 @@
 #include "log.h"
 
 namespace sge {
-	Window::Window(unsigned int w, unsigned int h, std::string title) 
+	Window::Window(unsigned int w, unsigned int h, std::string title) : windowWidth(w), windowHeight(h)
 	{
 		if (glfwInit()) {
-			glfwWin = glfwCreateWindow(w, h, title.c_str(), nullptr, nullptr);
+			glfwWin = glfwCreateWindow(windowWidth, windowHeight, title.c_str(), nullptr, nullptr);
 			if (!glfwWin)
 				LOG("Failed to create window");
 			glfwMakeContextCurrent(glfwWin);
