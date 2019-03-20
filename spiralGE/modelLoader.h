@@ -17,6 +17,7 @@ namespace sge {
 			}
 			else {
 				model.meshes.reserve(assimpScene->mNumMeshes);
+				//Messy and Inefficient Nested for loops. Consider using the boost library.
 				for (int i = 0; assimpScene->mNumMeshes > i; i++) {
 					sge::Graph::BasicMesh curMesh;
 					for (int j = 0; assimpScene->mMeshes[i]->mNumFaces > j; j++)
