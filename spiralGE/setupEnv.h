@@ -24,6 +24,7 @@ namespace sge {
 		while (!glfwWindowShouldClose(window.glfwWin)) {
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 			g.OGLDrawObject(smileyFace);
+			//Where is my switch statement you pleb?
 			if (glfwGetKey(window.glfwWin, GLFW_KEY_UP)) {
 				forwardPosition.z += 0.1;
 				transformEdit = glm::translate(transformEdit, forwardPosition);
